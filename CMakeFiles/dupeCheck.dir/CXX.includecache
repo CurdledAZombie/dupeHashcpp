@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aiden_user/Documents/UF/dupeHash/base64.cpp
+base64.h
+/home/aiden_user/Documents/UF/dupeHash/base64.h
+iostream
+-
+
+/home/aiden_user/Documents/UF/dupeHash/base64.h
+string
+-
+
+/home/aiden_user/Documents/UF/dupeHash/main.cpp
+base64.cpp
+/home/aiden_user/Documents/UF/dupeHash/base64.cpp
+picosha2.h
+/home/aiden_user/Documents/UF/dupeHash/picosha2.h
+bits/stdc++.h
+-
+iomanip
+-
+iostream
+-
+
+/home/aiden_user/Documents/UF/dupeHash/picosha2.h
+algorithm
+-
+cassert
+-
+iterator
+-
+sstream
+-
+vector
+-
+fstream
+-
+
