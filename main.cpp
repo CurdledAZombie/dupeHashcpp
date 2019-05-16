@@ -50,7 +50,7 @@ int main(int argc, char *arv[]) {
             }
         }
 
-        cout << encoded << endl;
+        //cout << encoded << endl;
     }
     cout << "Num of versions -- " << counter << endl;
     cout << "Duplicate -- " << encoded << endl;
