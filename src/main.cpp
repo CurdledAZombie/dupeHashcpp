@@ -30,7 +30,7 @@ int main(int argc, char *arv[]) {
 
         picosha2::hash256(version.begin(), version.end(), hash.begin(),
                           hash.end());
-        hash.resize(4);
+        hash.resize(5);
         string foo(hash.begin(), hash.end());
 
         encoded = base64_encode(
