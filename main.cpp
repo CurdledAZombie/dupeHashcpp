@@ -7,10 +7,8 @@
 using namespace std;
 
 int main(int argc, char *arv[]) {
-    cout << "Hello World" << endl;
-
     // vars
-    string hash = "";
+
     string version = "";
     string encoded = "";
     int first = 0;
@@ -22,15 +20,21 @@ int main(int argc, char *arv[]) {
 
     unordered_set<string> set;
 
+    vector<unsigned char> hash(picosha2::k_digest_size);
+
     // loop
     while (set.insert(encoded).second) {
         counter++;
         version = to_string(first) + "." + to_string(second) + "." +
-                  to_string(third) + ((!snapshot) ? "-SNAPSHOT" : "");
+                  to_string(third) + ((snapshot == 0) ? "-SNAPSHOT" : "");
 
-        hash = picosha2::hash256_hex_string(version).substr(0, 8);
-        encoded = base64_encode(reinterpret_cast<const unsigned char*>(hash.c_str()), hash.length());
+        picosha2::hash256(version.begin(), version.end(), hash.begin(),
+                          hash.end());
+        hash.resize(4);
+        string foo(hash.begin(), hash.end());
 
+        encoded = base64_encode(
+            reinterpret_cast<const unsigned char *>(foo.c_str()), foo.length());
 
         snapshot++;
         if (snapshot == 2) {
@@ -47,9 +51,6 @@ int main(int argc, char *arv[]) {
         }
 
         cout << encoded << endl;
-        /*if (counter == 50) {
-            break;
-            }*/
     }
     cout << "Num of versions -- " << counter << endl;
     cout << "Duplicate -- " << encoded << endl;
